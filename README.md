@@ -1,3 +1,5 @@
+<<<<<<< HEAD
+
 # StudyFlow — Student Assignment Tracker
 
 A client-side React web app for students to manage assignments, track due dates on a calendar, and stay focused with a built-in Pomodoro timer. All data is saved to the browser's localStorage — no backend or account needed.
@@ -7,11 +9,13 @@ A client-side React web app for students to manage assignments, track due dates 
 ## Features
 
 ### Dashboard
+
 - Summary stats: total assignments, due this week, overdue, and submitted
 - Upcoming assignments sorted by due date (next 5 shown)
 - Built-in **Pomodoro timer** (25-minute countdown with Start, Pause, and Reset)
 
 ### Assignments
+
 - Add, edit, and delete assignments
 - Fields: Title, Course, Due Date, Status, Priority
 - Filter by status (Not Started / In Progress / Submitted) and priority (High / Medium / Low)
@@ -19,16 +23,19 @@ A client-side React web app for students to manage assignments, track due dates 
 - Color-coded progress bars and status badges
 
 ### Calendar
+
 - Monthly calendar view with due dates marked as colored dots
 - Dot color matches assignment status (blue = Not Started, yellow = In Progress, green = Submitted)
 - Navigate between months with Previous / Next arrows
 
 ### Profile
+
 - View and edit your name, email, and university
 - Set preferred focus session length (25 / 45 / 60 minutes)
 - Toggle due date and daily focus reminders (UI-only)
 
 ### Authentication
+
 - Simple login with any non-empty email and password
 - Demo credentials pre-filled for quick access
 - Session persisted in localStorage
@@ -37,20 +44,21 @@ A client-side React web app for students to manage assignments, track due dates 
 
 ## Tech Stack
 
-| Layer | Technology |
-|---|---|
-| Framework | React 19 |
-| Build tool | Vite 7 |
-| Styling | Tailwind CSS 4 |
-| Icons | Lucide React |
-| Navigation | Custom `nav` state (no React Router) |
-| Persistence | Browser localStorage |
+| Layer       | Technology                           |
+| ----------- | ------------------------------------ |
+| Framework   | React 19                             |
+| Build tool  | Vite 7                               |
+| Styling     | Tailwind CSS 4                       |
+| Icons       | Lucide React                         |
+| Navigation  | Custom `nav` state (no React Router) |
+| Persistence | Browser localStorage                 |
 
 ---
 
 ## Getting Started
 
 ### Prerequisites
+
 - Node.js 18 or higher
 - npm
 
@@ -75,10 +83,10 @@ Open [http://localhost:5173](http://localhost:5173) in your browser.
 
 ### Demo login
 
-| Field | Value |
-|---|---|
-| Email | demo@studyflow.com |
-| Password | demo1234 |
+| Field    | Value              |
+| -------- | ------------------ |
+| Email    | demo@studyflow.com |
+| Password | demo1234           |
 
 Click the **Auto-fill** button on the login page to fill these in automatically.
 
@@ -136,12 +144,12 @@ Assignments are saved automatically to localStorage under the key `studyflow:ass
 
 ## Available Scripts
 
-| Script | Description |
-|---|---|
-| `npm run dev` | Start local dev server at localhost:5173 |
-| `npm run build` | Build for production (output in `/dist`) |
-| `npm run preview` | Preview the production build locally |
-| `npm run lint` | Run ESLint |
+| Script            | Description                              |
+| ----------------- | ---------------------------------------- |
+| `npm run dev`     | Start local dev server at localhost:5173 |
+| `npm run build`   | Build for production (output in `/dist`) |
+| `npm run preview` | Preview the production build locally     |
+| `npm run lint`    | Run ESLint                               |
 
 ---
 
