@@ -35,3 +35,10 @@ lerna-debug.log*
 # OS files
 .DS_Store
 Thumbs.db
+
+# SQLite database (local data)
+server/studyflow.db
+
+# Environment
+.env
+.env.local

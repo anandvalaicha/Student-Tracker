@@ -1,37 +1,32 @@
-import { useEffect, useState } from "react";
-import { load, save, remove } from "../utils/storage";
+import { useCallback, useEffect, useState } from 'react';
+import { login as apiLogin, getMe } from '../api/auth.js';
 
-const AUTH_KEY = "auth_user";
+const TOKEN_KEY = 'sf_token';
 
 export default function useAuth() {
-  const [user, setUser] = useState(() => load(AUTH_KEY, null));
+  const [user, setUser]       = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (user) save(AUTH_KEY, user);
-    else remove(AUTH_KEY);
-  }, [user]);
+    const token = localStorage.getItem(TOKEN_KEY);
+    if (!token) { setLoading(false); return; }
 
-  // beginner-friendly login:
-  // - you can make it "accept any non-empty" OR "demo credentials"
-  const login = ({ email, password }) => {
-    if (!email || !password) {
-      return { ok: false, message: "Email and password are required." };
-    }
+    getMe()
+      .then(setUser)
+      .catch(() => localStorage.removeItem(TOKEN_KEY))
+      .finally(() => setLoading(false));
+  }, []);
 
-    // Option A (demo credentials):
-    // if (email !== "anand@example.com" || password !== "1234") {
-    //   return { ok: false, message: "Invalid credentials (try anand@example.com / 1234)." };
-    // }
+  const login = useCallback(async ({ email, password }) => {
+    const { token, user: me } = await apiLogin(email, password);
+    localStorage.setItem(TOKEN_KEY, token);
+    setUser(me);
+  }, []);
 
-    // ✅ Accept any non-empty for now:
-    setUser({
-      email
-    });
+  const logout = useCallback(() => {
+    localStorage.removeItem(TOKEN_KEY);
+    setUser(null);
+  }, []);
 
-    return { ok: true };
-  };
-
-  const logout = () => setUser(null);
-
-  return { user, isAuthed: Boolean(user), login, logout };
+  return { user, isAuthed: Boolean(user), loading, login, logout };
 }
